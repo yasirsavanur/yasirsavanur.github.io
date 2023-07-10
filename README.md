@@ -1,6 +1,6 @@
 # yasirsavanur.github.io
 
-## Credits:
+## Courtesy of:
 
 	Demo Images:
 		Unsplash (unsplash.com)
