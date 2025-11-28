@@ -282,6 +282,22 @@ input, select, textarea {
 
 		}
 
+.tag-container {
+    	margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background-color: #e5e5e5;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
 /* Row */
 
 	.row {
@@ -1744,21 +1760,6 @@ input, select, textarea {
 			.button.alt:active {
 				background-color: #3f3f3f;
 			}
-.tag-container {
-    	margin: 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tag {
-    background-color: #e5e5e5;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #333;
-}
 
 
 /* List */
