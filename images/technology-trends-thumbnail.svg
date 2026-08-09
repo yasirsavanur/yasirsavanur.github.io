@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">2019 Technology Trends and Analysis</title>
+  <desc id="desc">A dark analytics dashboard illustration showing technology usage, future interest and a simple data pipeline from survey and job data to BI reporting.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081523"/>
+      <stop offset="1" stop-color="#173754"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10273d"/>
+      <stop offset="1" stop-color="#0b1e31"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" rx="28" fill="url(#bg)"/>
+  <circle cx="1090" cy="70" r="170" fill="#22c7d6" opacity="0.07"/>
+  <text x="54" y="70" fill="#f3fbff" font-family="Arial, sans-serif" font-size="34" font-weight="700">2019 Technology Trends &amp; Analysis</text>
+  <text x="54" y="108" fill="#a6c2d2" font-family="Arial, sans-serif" font-size="17">Stack Overflow survey + job-market signals + web-scraped comparison data</text>
+
+  <rect x="54" y="142" width="530" height="350" rx="18" fill="url(#panel)" stroke="#28536d"/>
+  <text x="82" y="182" fill="#e9f8ff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Current use vs. wanted next</text>
+  <g font-family="Arial, sans-serif" font-size="14">
+    <text x="82" y="228" fill="#b8d1df">JavaScript</text><rect x="190" y="212" width="285" height="18" rx="9" fill="#173a50"/><rect x="190" y="212" width="250" height="18" rx="9" fill="#35b6c8"/><rect x="190" y="238" width="285" height="12" rx="6" fill="#173a50"/><rect x="190" y="238" width="220" height="12" rx="6" fill="#f3b849"/>
+    <text x="82" y="292" fill="#b8d1df">Python</text><rect x="190" y="276" width="285" height="18" rx="9" fill="#173a50"/><rect x="190" y="276" width="170" height="18" rx="9" fill="#35b6c8"/><rect x="190" y="302" width="285" height="12" rx="6" fill="#173a50"/><rect x="190" y="302" width="235" height="12" rx="6" fill="#f3b849"/>
+    <text x="82" y="356" fill="#b8d1df">TypeScript</text><rect x="190" y="340" width="285" height="18" rx="9" fill="#173a50"/><rect x="190" y="340" width="125" height="18" rx="9" fill="#35b6c8"/><rect x="190" y="366" width="285" height="12" rx="6" fill="#173a50"/><rect x="190" y="366" width="190" height="12" rx="6" fill="#f3b849"/>
+    <text x="82" y="420" fill="#b8d1df">Go / Kotlin</text><rect x="190" y="404" width="285" height="18" rx="9" fill="#173a50"/><rect x="190" y="404" width="75" height="18" rx="9" fill="#35b6c8"/><rect x="190" y="430" width="285" height="12" rx="6" fill="#173a50"/><rect x="190" y="430" width="145" height="12" rx="6" fill="#f3b849"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="13"><circle cx="405" cy="470" r="6" fill="#35b6c8"/><text x="418" y="475" fill="#a6c2d2">Worked with</text><circle cx="495" cy="470" r="6" fill="#f3b849"/><text x="508" y="475" fill="#a6c2d2">Wanted next</text></g>
+
+  <rect x="612" y="142" width="534" height="350" rx="18" fill="url(#panel)" stroke="#28536d"/>
+  <text x="640" y="182" fill="#e9f8ff" font-family="Arial, sans-serif" font-size="20" font-weight="700">End-to-end workflow</text>
+  <g font-family="Arial, sans-serif">
+    <g><rect x="642" y="220" width="110" height="82" rx="14" fill="#122d46" stroke="#2d6382"/><circle cx="697" cy="246" r="13" fill="#2ba7bd"/><text x="659" y="278" fill="#d9edf6" font-size="14" font-weight="700">Survey data</text></g>
+    <text x="760" y="264" fill="#5da9c5" font-size="26">→</text>
+    <g><rect x="790" y="220" width="110" height="82" rx="14" fill="#122d46" stroke="#2d6382"/><circle cx="845" cy="246" r="13" fill="#f0ad3d"/><text x="815" y="278" fill="#d9edf6" font-size="14" font-weight="700">API + scrape</text></g>
+    <text x="908" y="264" fill="#5da9c5" font-size="26">→</text>
+    <g><rect x="938" y="220" width="110" height="82" rx="14" fill="#122d46" stroke="#2d6382"/><circle cx="993" cy="246" r="13" fill="#7c69d8"/><text x="965" y="278" fill="#d9edf6" font-size="14" font-weight="700">Wrangle</text></g>
+    <text x="1056" y="264" fill="#5da9c5" font-size="26">→</text>
+    <g><rect x="642" y="330" width="150" height="98" rx="14" fill="#122d46" stroke="#2d6382"/><text x="672" y="361" fill="#62d7e4" font-size="16" font-weight="700">Analyse</text><text x="661" y="388" fill="#a9c7d7" font-size="13">Usage, demand</text><text x="659" y="407" fill="#a9c7d7" font-size="13">and demographics</text></g>
+    <text x="805" y="389" fill="#5da9c5" font-size="28">→</text>
+    <g><rect x="842" y="330" width="150" height="98" rx="14" fill="#122d46" stroke="#2d6382"/><text x="865" y="361" fill="#62d7e4" font-size="16" font-weight="700">Visualise</text><text x="870" y="388" fill="#a9c7d7" font-size="13">Charts and</text><text x="868" y="407" fill="#a9c7d7" font-size="13">trend views</text></g>
+    <text x="1005" y="389" fill="#5da9c5" font-size="28">→</text>
+    <g><rect x="1042" y="330" width="82" height="98" rx="14" fill="#12364b" stroke="#35b6c8"/><text x="1057" y="363" fill="#62d7e4" font-size="15" font-weight="700">BI</text><text x="1052" y="386" fill="#d9edf6" font-size="13">report</text><text x="1050" y="407" fill="#d9edf6" font-size="13">&amp; slides</text></g>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="54" y="522" width="340" height="92" rx="16" fill="#10273d" stroke="#28536d"/><text x="78" y="554" fill="#66dbe5" font-size="16" font-weight="700">Cloud-native momentum</text><text x="78" y="579" fill="#a6c2d2" font-size="14">Docker and Kubernetes stand out</text><text x="78" y="598" fill="#a6c2d2" font-size="14">in future platform interest.</text>
+    <rect x="430" y="522" width="340" height="92" rx="16" fill="#10273d" stroke="#28536d"/><text x="454" y="554" fill="#66dbe5" font-size="16" font-weight="700">Data stack shift</text><text x="454" y="579" fill="#a6c2d2" font-size="14">PostgreSQL, MongoDB and Redis</text><text x="454" y="598" fill="#a6c2d2" font-size="14">show strong next-step interest.</text>
+    <rect x="806" y="522" width="340" height="92" rx="16" fill="#10273d" stroke="#28536d"/><text x="830" y="554" fill="#66dbe5" font-size="16" font-weight="700">Frontend direction</text><text x="830" y="579" fill="#a6c2d2" font-size="14">React and Vue rank strongly among</text><text x="830" y="598" fill="#a6c2d2" font-size="14">frameworks developers wanted next.</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="14" font-weight="700"><text x="54" y="650" fill="#5dd8e3">Python</text><text x="120" y="650" fill="#8fb2c5">Pandas</text><text x="185" y="650" fill="#8fb2c5">BeautifulSoup</text><text x="290" y="650" fill="#8fb2c5">APIs</text><text x="335" y="650" fill="#8fb2c5">EDA</text><text x="375" y="650" fill="#8fb2c5">BI reporting</text></g>
+</svg>
