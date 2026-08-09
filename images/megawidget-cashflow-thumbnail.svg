@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">MegaWidget Cashflow Analysis</title>
+  <desc id="desc">A dark financial dashboard illustration showing cashflow KPIs, a ten-year trend, cashflow categories and decision insights.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071910"/>
+      <stop offset="1" stop-color="#123526"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10291d"/>
+      <stop offset="1" stop-color="#0b2117"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" rx="28" fill="url(#bg)"/>
+  <circle cx="1080" cy="80" r="165" fill="#34d399" opacity="0.06"/>
+  <text x="54" y="72" fill="#f5fbf7" font-family="Arial, sans-serif" font-size="34" font-weight="700">MegaWidget Cashflow Analysis</text>
+  <text x="54" y="108" fill="#9db8aa" font-family="Arial, sans-serif" font-size="17">Dynamic Excel model for operating, investing and financing cashflows</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="54" y="142" width="205" height="92" rx="14" fill="#10291d" stroke="#275b42"/>
+    <circle cx="88" cy="184" r="20" fill="#1f7a4d"/><text x="82" y="191" fill="#fff" font-size="20" font-weight="700">£</text>
+    <text x="120" y="173" fill="#a9bdb2" font-size="14">TOTAL REVENUE</text><text x="120" y="207" fill="#f4fff8" font-size="26" font-weight="700">£1.25B</text>
+
+    <rect x="276" y="142" width="205" height="92" rx="14" fill="#10291d" stroke="#275b42"/>
+    <circle cx="310" cy="184" r="20" fill="#9b3c3c"/><path d="M302 181h16M310 173v16" stroke="#fff" stroke-width="3" transform="rotate(45 310 181)"/>
+    <text x="342" y="173" fill="#a9bdb2" font-size="14">TOTAL EXPENSES</text><text x="342" y="207" fill="#f4fff8" font-size="26" font-weight="700">£870M</text>
+
+    <rect x="498" y="142" width="205" height="92" rx="14" fill="#10291d" stroke="#275b42"/>
+    <circle cx="532" cy="184" r="20" fill="#1f7a4d"/><path d="M523 189l9-11 9 7" fill="none" stroke="#fff" stroke-width="3"/>
+    <text x="564" y="173" fill="#a9bdb2" font-size="14">NET CASHFLOW</text><text x="564" y="207" fill="#f4fff8" font-size="26" font-weight="700">£380M</text>
+
+    <rect x="720" y="142" width="205" height="92" rx="14" fill="#10291d" stroke="#275b42"/>
+    <circle cx="754" cy="184" r="20" fill="#256b8d"/><text x="746" y="191" fill="#fff" font-size="18" font-weight="700">%</text>
+    <text x="786" y="173" fill="#a9bdb2" font-size="14">NET MARGIN</text><text x="786" y="207" fill="#f4fff8" font-size="26" font-weight="700">30.6%</text>
+  </g>
+
+  <rect x="54" y="260" width="700" height="300" rx="18" fill="url(#panel)" stroke="#275b42"/>
+  <text x="82" y="300" fill="#e8f7ee" font-family="Arial, sans-serif" font-size="20" font-weight="700">Net cashflow over time</text>
+  <g stroke="#214434" stroke-width="1">
+    <line x1="98" y1="500" x2="712" y2="500"/><line x1="98" y1="444" x2="712" y2="444"/><line x1="98" y1="388" x2="712" y2="388"/><line x1="98" y1="332" x2="712" y2="332"/>
+  </g>
+  <g fill="#7f9e8e" font-family="Arial, sans-serif" font-size="12">
+    <text x="80" y="504">£0</text><text x="65" y="448">£20M</text><text x="65" y="392">£40M</text><text x="65" y="336">£60M</text>
+    <text x="92" y="530">2014</text><text x="212" y="530">2016</text><text x="332" y="530">2018</text><text x="452" y="530">2020</text><text x="572" y="530">2022</text><text x="676" y="530">2023</text>
+  </g>
+  <path d="M105 474 L165 447 L225 442 L285 424 L345 398 L405 389 L465 373 L525 360 L585 345 L645 330 L705 317" fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#4ade80"><circle cx="105" cy="474" r="5"/><circle cx="165" cy="447" r="5"/><circle cx="225" cy="442" r="5"/><circle cx="285" cy="424" r="5"/><circle cx="345" cy="398" r="5"/><circle cx="405" cy="389" r="5"/><circle cx="465" cy="373" r="5"/><circle cx="525" cy="360" r="5"/><circle cx="585" cy="345" r="5"/><circle cx="645" cy="330" r="5"/><circle cx="705" cy="317" r="5"/></g>
+
+  <rect x="780" y="260" width="366" height="300" rx="18" fill="url(#panel)" stroke="#275b42"/>
+  <text x="810" y="300" fill="#e8f7ee" font-family="Arial, sans-serif" font-size="20" font-weight="700">Cashflow mix</text>
+  <circle cx="875" cy="392" r="68" fill="none" stroke="#284c3b" stroke-width="34"/>
+  <circle cx="875" cy="392" r="68" fill="none" stroke="#45c878" stroke-width="34" stroke-dasharray="225 430" stroke-linecap="butt" transform="rotate(-90 875 392)"/>
+  <circle cx="875" cy="392" r="68" fill="none" stroke="#f0b43c" stroke-width="34" stroke-dasharray="120 430" stroke-dashoffset="-225" transform="rotate(-90 875 392)"/>
+  <circle cx="875" cy="392" r="68" fill="none" stroke="#d96d5a" stroke-width="34" stroke-dasharray="85 430" stroke-dashoffset="-345" transform="rotate(-90 875 392)"/>
+  <g font-family="Arial, sans-serif" font-size="14">
+    <rect x="980" y="344" width="14" height="14" rx="3" fill="#45c878"/><text x="1005" y="356" fill="#c8dbd0">Operating</text>
+    <rect x="980" y="382" width="14" height="14" rx="3" fill="#f0b43c"/><text x="1005" y="394" fill="#c8dbd0">Investing</text>
+    <rect x="980" y="420" width="14" height="14" rx="3" fill="#d96d5a"/><text x="1005" y="432" fill="#c8dbd0">Financing</text>
+  </g>
+
+  <rect x="54" y="588" width="1092" height="50" rx="14" fill="#0d2519" stroke="#275b42"/>
+  <g font-family="Arial, sans-serif" font-size="15" font-weight="700">
+    <text x="82" y="620" fill="#67e39a">Excel</text><text x="160" y="620" fill="#8ba99a">Power Query</text><text x="290" y="620" fill="#8ba99a">VBA</text><text x="350" y="620" fill="#8ba99a">Dashboard</text><text x="465" y="620" fill="#8ba99a">Financial modelling</text>
+    <text x="946" y="620" fill="#67e39a">Decision support →</text>
+  </g>
+</svg>
