@@ -47,7 +47,13 @@ h6 {
 }
 
 a {
+  text-decoration: none;
   transition: color 160ms ease, border-color 160ms ease, background 160ms ease, opacity 160ms ease;
+}
+
+.project-ledger > a,
+.project-ledger > a * {
+  text-decoration: none;
 }
 
 ::selection {
