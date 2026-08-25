@@ -265,18 +265,6 @@ a {
   object-position: center 67%;
 }
 
-.frame-index {
-  position: absolute;
-  top: 28px;
-  left: 28px;
-  z-index: 2;
-  padding: 6px 8px;
-  background: rgba(8, 10, 9, 0.76);
-  color: var(--gold-bright);
-  font-size: 0.48rem;
-  letter-spacing: 0.16em;
-}
-
 .portrait-caption {
   display: flex;
   max-width: 430px;
