@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bangalore Accident Analysis case study: a Tableau geospatial analysis of BMTC collision-warning data, hotspots and road-safety patterns.">
+    <meta name="theme-color" content="#fafaf7">
+    <title>Bangalore Accident Analysis | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/case-study.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(40, 154, 255, 0.12)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://public.tableau.com/app/profile/yasir.savanur/viz/BangaloreAccidentsGeoSpatialAnalysis/ColisionHotspotsDashboard" target="_blank" rel="noreferrer">Tableau dashboard <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#more-work"><span aria-hidden="true">←</span> Back to project archive</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">10 · Tableau · Geospatial analysis</p>
+              <h1>Bangalore Accident Analysis</h1>
+              <p class="case-lead">An interactive Tableau analysis using collision-warning data from BMTC buses to explore where risk clusters and how safety systems can be evaluated.</p>
+              <div class="case-actions"><a class="button button-primary" href="https://public.tableau.com/app/profile/yasir.savanur/viz/BangaloreAccidentsGeoSpatialAnalysis/ColisionHotspotsDashboard" target="_blank" rel="noreferrer">Open Tableau dashboard <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>Geospatial analysis and dashboard design</dd></div>
+                <div><dt>Stack</dt><dd>Tableau, mapping, interactive filtering</dd></div>
+                <div><dt>Data</dt><dd>Collision-avoidance events from BMTC buses</dd></div>
+                <div><dt>Focus</dt><dd>Hotspots, warnings and targeted safety action</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal"><img src="../images/bangalore-accidents.jpeg" alt="BMTC buses in Bangalore, the fleet context for the collision-warning analysis"></div>
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>BMTC</strong><span>public-bus operating context</span></div>
+            <div class="case-fact"><strong>Geo</strong><span>location-led pattern analysis</span></div>
+            <div class="case-fact"><strong>Interactive</strong><span>Tableau filtering and exploration</span></div>
+            <div class="case-fact"><strong>Action</strong><span>targeted safety recommendations</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents"><span>On this page</span><nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#approach">Approach</a><a href="#dashboard">Dashboard</a><a href="#use">Use</a><a href="#limits">Limits</a></nav></aside>
+          <article class="case-article">
+            <section id="brief">
+              <h2>Safety events make more sense in place</h2>
+              <p>A table of collision warnings can show frequency, but location gives the events operational context. Repeated warnings around the same roads or junctions may point towards a pattern worth investigating.</p>
+              <p>This project uses BMTC bus collision-avoidance data to explore the geographic distribution of events, identify hotspots and consider how effectively warnings support safer operation.</p>
+              <div class="callout"><p>The dashboard is an investigation tool. A hotspot tells an analyst where to look more closely; it does not establish the cause of every warning at that location.</p></div>
+            </section>
+
+            <section id="approach">
+              <h2>From event records to a navigable map</h2>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Prepare collision-warning records</b><small>Keep the location and event attributes needed for analysis.</small></div><em>PREPARE</em></div>
+                <div class="flow-step"><span>02</span><div><b>Plot the geographic distribution</b><small>Move from rows to a city-level view of concentration.</small></div><em>MAP</em></div>
+                <div class="flow-step"><span>03</span><div><b>Identify repeated-event areas</b><small>Use concentration to direct attention towards potential hotspots.</small></div><em>LOCATE</em></div>
+                <div class="flow-step"><span>04</span><div><b>Expose filters and detail</b><small>Let the viewer move between overview and individual patterns.</small></div><em>EXPLORE</em></div>
+                <div class="flow-step"><span>05</span><div><b>Frame safety recommendations</b><small>Translate patterns into areas for operational review.</small></div><em>ACT</em></div>
+              </div>
+            </section>
+
+            <section id="dashboard">
+              <h2>Designed for questions, not a static map</h2>
+              <p>The Tableau view allows the user to explore where collision-warning events cluster and compare patterns rather than relying on one city-wide total.</p>
+              <div class="decision-grid">
+                <article class="decision-card"><span>VIEW 01</span><h3>Collision hotspots</h3><p>Concentrated areas surface first so scarce investigation time has a starting point.</p></article>
+                <article class="decision-card"><span>VIEW 02</span><h3>Pattern context</h3><p>Interactive detail helps separate an isolated event from repeated warnings.</p></article>
+                <article class="decision-card"><span>VIEW 03</span><h3>System evaluation</h3><p>Warning events can be reviewed as evidence of where the technology is activated.</p></article>
+                <article class="decision-card"><span>VIEW 04</span><h3>Safety action</h3><p>The analysis supports targeted route, driver or road-environment review.</p></article>
+              </div>
+              <div class="case-tags"><span>Tableau</span><span>Geospatial analysis</span><span>Collision warnings</span><span>BMTC</span><span>Hotspot analysis</span><span>Road safety</span><span>Interactive dashboard</span></div>
+            </section>
+
+            <section id="use">
+              <h2>A signal for prioritisation</h2>
+              <p>Used responsibly, the dashboard can help a transport analyst prioritise locations for deeper review and ask better questions about routes, junctions, operating conditions or warning-system behaviour.</p>
+              <p>The analysis is most useful when combined with exposure measures such as journeys or kilometres travelled, plus road geometry, time, weather and verified incident outcomes.</p>
+            </section>
+
+            <section id="limits">
+              <h2>A warning is not automatically an accident</h2>
+              <p>Collision-avoidance events show that the system detected a risky condition; they do not by themselves prove a crash occurred or that one party caused it. More warnings may also reflect more bus activity rather than a more dangerous road.</p>
+              <p>The dashboard should therefore guide investigation and safety planning, not be used as a standalone causal model.</p>
+            </section>
+
+            <a class="next-case" href="pitchquery.html"><span>Back to the first case study</span><b>PitchQuery <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>

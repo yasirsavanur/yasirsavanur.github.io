@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Football Results Browser Automation case study: reliable Selenium extraction from a dynamic statistics website with structured exports and deterministic CI tests.">
+    <meta name="theme-color" content="#fafaf7">
+    <title>Football Results Browser Automation | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/case-study.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(48, 71, 255, 0.1)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://github.com/yasirsavanur/selenium-football-results-automation" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#more-work"><span aria-hidden="true">←</span> Back to project archive</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">06 · Browser automation · Structured extraction</p>
+              <h1>Football Results Browser Automation</h1>
+              <p class="case-lead">A Selenium application that turns a dynamic, filter-driven football website into clean CSV or JSON without hiding the reliability work behind the browser.</p>
+              <div class="case-actions"><a class="button button-primary" href="https://github.com/yasirsavanur/selenium-football-results-automation" target="_blank" rel="noreferrer">View full repository <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>Scraper architecture, page object and test design</dd></div>
+                <div><dt>Stack</dt><dd>Python, Selenium 4, pytest, GitHub Actions</dd></div>
+                <div><dt>Output</dt><dd>Normalised match records in CSV or JSON</dd></div>
+                <div><dt>Focus</dt><dd>Dynamic-page stability and useful failure evidence</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal">
+            <div class="qa-visual" role="img" aria-label="Browser extraction stages from navigation to structured export">
+              <div class="qa-job"><i></i><span>Country · league · season filters</span><span>SELECTED</span></div>
+              <div class="qa-job"><i></i><span>Complete match view · DOM stabilised</span><span>READY</span></div>
+              <div class="qa-job"><i></i><span>Scores · teams · dates · outcomes</span><span>EXTRACTED</span></div>
+              <div class="qa-job"><i></i><span>Duplicate match records</span><span>REMOVED</span></div>
+              <div class="qa-job"><i></i><span>CSV / JSON output</span><span>WRITTEN</span></div>
+            </div>
+          </div>
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>2</strong><span>portable output formats</span></div>
+            <div class="case-fact"><strong>0</strong><span>live-site calls made by CI tests</span></div>
+            <div class="case-fact"><strong>8+</strong><span>fields retained for every match</span></div>
+            <div class="case-fact"><strong>HTML + PNG</strong><span>evidence captured after failures</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents"><span>On this page</span><nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#journey">Browser journey</a><a href="#reliability">Reliability</a><a href="#testing">Testing</a><a href="#limits">Limits</a></nav></aside>
+          <article class="case-article">
+            <section id="brief">
+              <h2>Extracting data that only appears after interaction</h2>
+              <p>The source site does not present one stable table URL. A user first chooses a country, league and season, then opens the complete-results view. The useful records appear only after that sequence of browser actions.</p>
+              <p>The project automates that journey and returns a reusable dataset containing dates, competition context, home and away teams, scores, goals, outcomes and the source URL.</p>
+              <div class="callout"><p>The objective is not simply to make Selenium click. It is to leave behind data that is consistent enough to analyse and a failure that is specific enough to investigate.</p></div>
+            </section>
+
+            <section id="journey">
+              <h2>A narrow workflow with clear boundaries</h2>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Configure the request</b><small>Country, league, season, output path and format are explicit inputs.</small></div><em>INPUT</em></div>
+                <div class="flow-step"><span>02</span><div><b>Navigate through the page object</b><small>Selectors and browser actions remain outside the extraction logic.</small></div><em>BROWSE</em></div>
+                <div class="flow-step"><span>03</span><div><b>Wait for the required state</b><small>Explicit conditions replace machine-dependent fixed sleeps.</small></div><em>SYNC</em></div>
+                <div class="flow-step"><span>04</span><div><b>Parse and deduplicate</b><small>Rendered match rows become a consistent record structure.</small></div><em>SHAPE</em></div>
+                <div class="flow-step"><span>05</span><div><b>Export</b><small>The same records can be written as CSV or JSON.</small></div><em>DELIVER</em></div>
+              </div>
+              <p>Separating the page object, scraper and command-line interface keeps website mechanics away from data shaping. A changed selector should not require the export code to be rewritten.</p>
+            </section>
+
+            <section id="reliability">
+              <h2>Defensive automation for a dynamic page</h2>
+              <div class="decision-grid">
+                <article class="decision-card"><span>CHOICE 01</span><h3>Explicit waits</h3><p>The workflow waits for the condition it actually needs instead of guessing a delay.</p></article>
+                <article class="decision-card"><span>CHOICE 02</span><h3>DOM stability</h3><p>Extraction begins after the results view has stopped changing.</p></article>
+                <article class="decision-card"><span>CHOICE 03</span><h3>Fallback clicks</h3><p>Alternative interaction paths handle elements that are present but awkward to activate.</p></article>
+                <article class="decision-card"><span>CHOICE 04</span><h3>Selenium Manager</h3><p>Drivers are resolved without committing a machine-specific executable path.</p></article>
+              </div>
+              <p>Headless execution makes the workflow suitable for CI. If the page fails, the application saves a screenshot and the corresponding HTML so visible state and DOM state can be inspected together.</p>
+            </section>
+
+            <section id="testing">
+              <h2>Deterministic tests without scraping the live site</h2>
+              <p>CI uses a local HTML fixture rather than depending on the public website. This makes the parsing and interaction checks repeatable and avoids turning a third party’s outage or redesign into a false project failure.</p>
+              <p>pytest, coverage and linting run in GitHub Actions. The live site remains the real execution target, but the build verifies the behaviour the repository owns.</p>
+              <div class="case-tags"><span>Python</span><span>Selenium 4</span><span>pytest</span><span>Page object</span><span>Explicit waits</span><span>CSV</span><span>JSON</span><span>GitHub Actions</span></div>
+            </section>
+
+            <section id="limits">
+              <h2>What remains fragile</h2>
+              <p>Browser automation still depends on the source site’s interface and terms of use. A major layout change may require selector updates, and responsible use should include conservative request frequency.</p>
+              <p>For repeated production collection, a documented API would be preferable. Where none exists, the current design confines that fragility to one page object and keeps the output contract stable.</p>
+            </section>
+
+            <a class="next-case" href="jenkins-pipeline.html"><span>Next case study</span><b>Jenkins Selenium Delivery Pipeline <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>

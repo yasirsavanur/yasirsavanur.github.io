@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MegaWidget Cashflow Model case study: an Excel and VBA decision model for financing, margin, advertising, delivery and forecast scenarios.">
+    <meta name="theme-color" content="#fafaf7">
+    <title>MegaWidget Cashflow Model | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/case-study.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(41, 176, 105, 0.11)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://github.com/yasirsavanur/spreadsheet_cashflow_analysis" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#more-work"><span aria-hidden="true">←</span> Back to project archive</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">08 · Financial modelling · Decision support</p>
+              <h1>MegaWidget Cashflow Model</h1>
+              <p class="case-lead">An Excel and VBA model that tests how financing, margin, advertising and delivery choices change a manufacturer’s cash position.</p>
+              <div class="case-actions"><a class="button button-primary" href="https://github.com/yasirsavanur/spreadsheet_cashflow_analysis" target="_blank" rel="noreferrer">View full repository <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>Workbook model, scenario analysis and automation</dd></div>
+                <div><dt>Stack</dt><dd>Excel, VBA, Pivot Tables, Power Query</dd></div>
+                <div><dt>Business</dt><dd>Dummy manufacturing company</dd></div>
+                <div><dt>Focus</dt><dd>Cash impact of controllable assumptions</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal"><img src="https://raw.githubusercontent.com/yasirsavanur/spreadsheet_cashflow_analysis/main/images/dashboard.png" alt="MegaWidget Excel cashflow dashboard with scenario controls and financial outputs"></div>
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>10 / 12</strong><span>loss-making months in the default scenario</span></div>
+            <div class="case-fact"><strong>£157,410</strong><span>year-end profit in the optimised scenario</span></div>
+            <div class="case-fact"><strong>1,000</strong><span>Monte Carlo iterations</span></div>
+            <div class="case-fact"><strong>46%</strong><span>maximum delivery saving identified</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents"><span>On this page</span><nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#model">Model structure</a><a href="#scenarios">Scenarios</a><a href="#risk">Forecast risk</a><a href="#limits">Limits</a></nav></aside>
+          <article class="case-article">
+            <section id="brief">
+              <h2>Turning a spreadsheet into a set of decisions</h2>
+              <p>MegaWidget is a fictional manufacturer facing a familiar question: the business can change borrowing terms, advertising spend, margin assumptions and delivery arrangements, but each choice affects cash at a different point.</p>
+              <p>The workbook cleans the supplied sales data, models the operating and financing effects, and makes alternative assumptions comparable without rewriting formulas for every scenario.</p>
+              <div class="callout"><p>The useful output is not one forecast. It is the ability to see which assumptions create the forecast and how sensitive the result is when they move.</p></div>
+            </section>
+
+            <section id="model">
+              <h2>A workbook with a repeatable refresh path</h2>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Raw sales data</b><small>The original records are preserved as the input layer.</small></div><em>SOURCE</em></div>
+                <div class="flow-step"><span>02</span><div><b>VBA cleaning routine</b><small>Mechanical preparation is repeatable rather than manual.</small></div><em>CLEAN</em></div>
+                <div class="flow-step"><span>03</span><div><b>Assumption controls</b><small>Loan, margin, advertising and delivery variables remain visible.</small></div><em>MODEL</em></div>
+                <div class="flow-step"><span>04</span><div><b>Cashflow calculations</b><small>Operating, investing and financing effects update together.</small></div><em>CALCULATE</em></div>
+                <div class="flow-step"><span>05</span><div><b>Dashboard and scenarios</b><small>Decision-makers can compare consequences, not formula cells.</small></div><em>DECIDE</em></div>
+              </div>
+              <p>Refresh and recalculation macros keep the workflow consistent. Pivot-based summaries make the model easier to inspect while the assumption cells keep the decision levers explicit.</p>
+            </section>
+
+            <section id="scenarios">
+              <h2>The default case exposed a cash problem</h2>
+              <p>With a £650,000 loan over ten years at 4.3%, a 25% margin and £30,000 monthly advertising spend, the model produces losses in ten of twelve months.</p>
+              <p>An alternative case extends the loan to fifteen years, raises margin to 28% and reduces monthly advertising to £20,000. Under those assumptions, the model reaches £157,410 year-end profit.</p>
+              <div class="decision-grid">
+                <article class="decision-card"><span>FINANCE</span><h3>Longer loan term</h3><p>Reduces near-term repayment pressure while increasing the period of exposure.</p></article>
+                <article class="decision-card"><span>MARGIN</span><h3>Three-point increase</h3><p>Improves unit economics, subject to the commercial reality of pricing.</p></article>
+                <article class="decision-card"><span>MARKETING</span><h3>Lower fixed spend</h3><p>Improves cash but should be weighed against demand effects.</p></article>
+                <article class="decision-card"><span>DELIVERY</span><h3>£14.95 per order</h3><p>The partner offer could save up to 46% against the modelled alternative.</p></article>
+              </div>
+              <p>A proposed discount plan is also quantified rather than described vaguely: it reduces modelled revenue by roughly 4.7% and profit by roughly 6.8%.</p>
+            </section>
+
+            <section id="risk">
+              <h2>A forecast range instead of false certainty</h2>
+              <p>The workbook includes a deterministic 5% monthly growth case and a 1,000-iteration Monte Carlo simulation. The simulated range makes clear that a single point estimate is only one possible outcome.</p>
+              <p>In the documented run, the best monthly outcome exceeds £200,000, the worst falls below £50,000 and the average is approximately £87,000. These are model outputs, not guarantees.</p>
+              <div class="case-tags"><span>Excel</span><span>VBA</span><span>Power Query</span><span>Pivot Tables</span><span>Scenario analysis</span><span>Monte Carlo</span><span>Cashflow</span><span>Decision support</span></div>
+            </section>
+
+            <section id="limits">
+              <h2>Where the model needs judgement</h2>
+              <p>The company and assumptions are illustrative. A real decision would require validated demand response, tax treatment, working-capital timing and the full cost of finance.</p>
+              <p>The model is still valuable because it makes those assumptions visible. Its conclusions should be read as scenario comparisons, not a claim that changing three cells will guarantee the optimised result.</p>
+            </section>
+
+            <a class="next-case" href="automotive-sql.html"><span>Next case study</span><b>Automotive Industry Trends in India <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>

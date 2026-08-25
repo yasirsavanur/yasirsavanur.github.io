@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jenkins Selenium Delivery Pipeline case study: a parameterised CI pipeline with local and cloud browser execution, quality gates and retained failure evidence.">
+    <meta name="theme-color" content="#fafaf7">
+    <title>Jenkins Selenium Delivery Pipeline | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/case-study.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(48, 71, 255, 0.1)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://github.com/yasirsavanur/Jenkins-CI" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#more-work"><span aria-hidden="true">←</span> Back to project archive</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">07 · CI engineering · Browser quality gates</p>
+              <h1>Jenkins Selenium Delivery Pipeline</h1>
+              <p class="case-lead">A parameterised Jenkins pipeline that can move from fast code checks to local or cloud browser acceptance tests while keeping secrets and failure evidence under control.</p>
+              <div class="case-actions"><a class="button button-primary" href="https://github.com/yasirsavanur/Jenkins-CI" target="_blank" rel="noreferrer">View full repository <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>Pipeline design, container setup and test routing</dd></div>
+                <div><dt>Stack</dt><dd>Jenkins, Docker, Python, pytest, Selenium 4</dd></div>
+                <div><dt>Targets</dt><dd>Local browser or LambdaTest grid</dd></div>
+                <div><dt>Focus</dt><dd>Repeatable gates and diagnosable failures</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal">
+            <div class="qa-visual" role="img" aria-label="Jenkins pipeline stages passing from validation to evidence publishing">
+              <div class="qa-job"><i></i><span>Parameters · repository · environment</span><span>VALIDATED</span></div>
+              <div class="qa-job"><i></i><span>Lint · unit tests</span><span>PASSED</span></div>
+              <div class="qa-job"><i></i><span>Selenium · local / LambdaTest</span><span>ROUTED</span></div>
+              <div class="qa-job"><i></i><span>JUnit · HTML · screenshots · source</span><span>PUBLISHED</span></div>
+              <div class="qa-job"><i></i><span>Workspace and temporary state</span><span>CLEANED</span></div>
+            </div>
+          </div>
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>3</strong><span>selectable test suites</span></div>
+            <div class="case-fact"><strong>2</strong><span>execution targets</span></div>
+            <div class="case-fact"><strong>2</strong><span>desktop browser choices</span></div>
+            <div class="case-fact"><strong>1–4</strong><span>selectable worker count</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents"><span>On this page</span><nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#controls">Run controls</a><a href="#pipeline">Pipeline shape</a><a href="#evidence">Evidence</a><a href="#security">Security</a></nav></aside>
+          <article class="case-article">
+            <section id="brief">
+              <h2>One pipeline, several legitimate ways to run it</h2>
+              <p>A useful browser-testing job needs different modes. A quick smoke run should not require the same time or infrastructure as a full regression suite, and a local browser should be replaceable with a remote grid without maintaining a second pipeline.</p>
+              <p>The declarative Jenkinsfile exposes those decisions as validated parameters while keeping the build stages consistent.</p>
+              <div class="callout"><p>The pipeline treats test results and diagnostic artifacts as delivery outputs, not console noise someone must reconstruct after the build.</p></div>
+            </section>
+
+            <section id="controls">
+              <h2>Useful flexibility without arbitrary combinations</h2>
+              <div class="decision-grid">
+                <article class="decision-card"><span>SUITE</span><h3>Smoke, regression or mobile</h3><p>The requested depth is chosen at build time.</p></article>
+                <article class="decision-card"><span>TARGET</span><h3>Local or LambdaTest</h3><p>The same acceptance layer can use the agent browser or a remote grid.</p></article>
+                <article class="decision-card"><span>BROWSER</span><h3>Chrome or Firefox</h3><p>Desktop browser selection is explicit and visible in the run.</p></article>
+                <article class="decision-card"><span>WORKERS</span><h3>One, two or four</h3><p>Parallelism is constrained to known values rather than free text.</p></article>
+              </div>
+              <p>The validation stage rejects unsupported combinations such as mobile with Firefox before expensive setup begins. Failing early makes the reason clear and saves executor time.</p>
+            </section>
+
+            <section id="pipeline">
+              <h2>A delivery path that reads like the investigation path</h2>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Validate and check out</b><small>Reject invalid parameters before touching the test environment.</small></div><em>GUARD</em></div>
+                <div class="flow-step"><span>02</span><div><b>Create an isolated environment</b><small>Install the repository’s Python dependencies repeatably.</small></div><em>PREPARE</em></div>
+                <div class="flow-step"><span>03</span><div><b>Lint and run unit tests</b><small>Fast feedback arrives before browser execution.</small></div><em>CHECK</em></div>
+                <div class="flow-step"><span>04</span><div><b>Route acceptance tests</b><small>Local Selenium or the configured LambdaTest session.</small></div><em>VERIFY</em></div>
+                <div class="flow-step"><span>05</span><div><b>Publish and clean</b><small>Keep the evidence; remove disposable workspace state.</small></div><em>CLOSE</em></div>
+              </div>
+              <p>The repository includes a Dockerfile, Compose configuration and pinned Jenkins plugins so the controller and browser-ready agent can be reproduced instead of being described only in screenshots.</p>
+            </section>
+
+            <section id="evidence">
+              <h2>Artifacts designed for the failed build</h2>
+              <p>JUnit output gives Jenkins structured test status. The HTML report supports human review, while screenshots and page source preserve the browser state that caused an acceptance check to fail.</p>
+              <p>Artifacts are fingerprinted and retained under an explicit policy. Publishing runs after failure, because that is exactly when the diagnostic record matters.</p>
+              <div class="case-tags"><span>Jenkins</span><span>Declarative pipeline</span><span>Docker</span><span>Python</span><span>pytest</span><span>Selenium 4</span><span>JUnit</span><span>LambdaTest</span></div>
+            </section>
+
+            <section id="security">
+              <h2>Cloud execution without credentials in source</h2>
+              <p>Remote-grid credentials are injected through Jenkins credentials binding. They do not belong in the repository, generated command text or archived output.</p>
+              <p>A production extension would add role-based folder permissions, external secret rotation, distributed agents and trend reporting across builds. The current project establishes the core boundary: configuration can vary, but secrets and quality gates remain controlled.</p>
+            </section>
+
+            <a class="next-case" href="cashflow-model.html"><span>Next case study</span><b>MegaWidget Cashflow Model <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>

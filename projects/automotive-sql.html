@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Automotive Industry Trends in India case study: analytical SQL across used-car listings, prices, mileage, specifications and model years.">
+    <meta name="theme-color" content="#fafaf7">
+    <title>Automotive Industry Trends in India | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/case-study.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(255, 139, 61, 0.1)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://github.com/yasirsavanur/Databases_SQL/tree/main/Exploring%20Indian%20Automotive%20Industry" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#more-work"><span aria-hidden="true">←</span> Back to project archive</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">09 · SQL analysis · Used-car listings</p>
+              <h1>Automotive Industry Trends in India</h1>
+              <p class="case-lead">A set of business-led SQL analyses exploring how price, mileage, specifications and usage vary across an Indian used-car listing dataset.</p>
+              <div class="case-actions"><a class="button button-primary" href="https://github.com/yasirsavanur/Databases_SQL/tree/main/Exploring%20Indian%20Automotive%20Industry" target="_blank" rel="noreferrer">View project files <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>Question design, SQL analysis and interpretation</dd></div>
+                <div><dt>Stack</dt><dd>SQL, CSV import, relational database</dd></div>
+                <div><dt>Data</dt><dd>Real-world used-car listing records</dd></div>
+                <div><dt>Focus</dt><dd>Pricing, mileage, usage and model-year patterns</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal">
+            <div class="qa-visual" role="img" aria-label="Analytical SQL techniques used across the automotive listing project">
+              <div class="qa-job"><i></i><span>Fuel · ownership · transmission</span><span>SEGMENT</span></div>
+              <div class="qa-job"><i></i><span>AVG · MIN · MAX · SUM</span><span>AGGREGATE</span></div>
+              <div class="qa-job"><i></i><span>CTEs · scalar subqueries</span><span>STRUCTURE</span></div>
+              <div class="qa-job"><i></i><span>SUM OVER · AVG OVER · LAG · RANK</span><span>WINDOW</span></div>
+              <div class="qa-job"><i></i><span>Listing patterns · stated limitations</span><span>INTERPRET</span></div>
+            </div>
+          </div>
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>10</strong><span>documented analytical questions</span></div>
+            <div class="case-fact"><strong>4</strong><span>window-function patterns</span></div>
+            <div class="case-fact"><strong>±10%</strong><span>market-average price band</span></div>
+            <div class="case-fact"><strong>13</strong><span>listing attributes described</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents"><span>On this page</span><nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#questions">Questions</a><a href="#sql">SQL progression</a><a href="#interpretation">Interpretation</a><a href="#extensions">Extensions</a></nav></aside>
+          <article class="case-article">
+            <section id="brief">
+              <h2>SQL organised around questions, not syntax</h2>
+              <p>Each row is a used-car listing with fields including model, year, listed selling price, kilometres driven, fuel, seller type, transmission, ownership, mileage, engine, power, torque and seats.</p>
+              <p>The analysis starts with practical market questions and then selects the SQL needed to answer them. That keeps the work closer to an analyst’s workflow than a collection of disconnected query examples.</p>
+              <div class="callout"><p>The dataset records listings and asking prices. It does not prove completed transactions, revenue or causal market effects.</p></div>
+            </section>
+
+            <section id="questions">
+              <h2>From segments to movement within a model</h2>
+              <div class="decision-grid">
+                <article class="decision-card"><span>PRICE</span><h3>Fuel and ownership</h3><p>Compare average listed price for first-owner manual vehicles by fuel type.</p></article>
+                <article class="decision-card"><span>UTILITY</span><h3>Larger vehicles</h3><p>Identify high-mileage models among vehicles with more than five seats.</p></article>
+                <article class="decision-card"><span>SPREAD</span><h3>Within-model variation</h3><p>Find models with a large gap between minimum and maximum listed price.</p></article>
+                <article class="decision-card"><span>BENCHMARK</span><h3>Price near average</h3><p>Isolate listings within ten percent of the dataset-wide mean.</p></article>
+              </div>
+              <p>Other questions examine above-average price combined with below-average mileage, cumulative listed value by model year, price decreases relative to the previous observation and total recorded kilometres by transmission type.</p>
+            </section>
+
+            <section id="sql">
+              <h2>Increasing complexity only when the question needs it</h2>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Filter and aggregate</b><small>WHERE, GROUP BY and HAVING establish the core segments.</small></div><em>BASE</em></div>
+                <div class="flow-step"><span>02</span><div><b>Benchmark with subqueries</b><small>Individual listings are compared with global averages.</small></div><em>COMPARE</em></div>
+                <div class="flow-step"><span>03</span><div><b>Stage logic with CTEs</b><small>Intermediate summaries support a second analytical step.</small></div><em>COMPOSE</em></div>
+                <div class="flow-step"><span>04</span><div><b>Keep row detail with windows</b><small>Cumulative sums and running averages avoid collapsing records.</small></div><em>ANALYSE</em></div>
+                <div class="flow-step"><span>05</span><div><b>Compare and rank</b><small>LAG and RANK expose ordered relationships.</small></div><em>ORDER</em></div>
+              </div>
+              <p>The running average is documented accurately as cumulative or expanding. Although an original comment called it an exponential moving average, the SQL applies equal weight to all preceding rows and is therefore not a true EMA.</p>
+            </section>
+
+            <section id="interpretation">
+              <h2>Caveats kept beside the analysis</h2>
+              <p>Large price spreads within a model may reflect different years, trims, condition or specification. A price decline relative to the previous ordered row is an observation within the listing data, not proof of depreciation.</p>
+              <p>The final ranking query also has a known limitation: partitioning by model ranks within each model rather than isolating the three highest-priced models overall. Calling that out is more useful than presenting an incorrect top-three claim.</p>
+              <div class="case-tags"><span>SQL</span><span>CTEs</span><span>Subqueries</span><span>Window functions</span><span>LAG</span><span>RANK</span><span>Pricing analysis</span><span>EDA</span></div>
+            </section>
+
+            <section id="extensions">
+              <h2>A clear route from exercise to fuller model</h2>
+              <p>Natural next steps include normalising vehicle, model, seller and specification entities; adding manufacturer-level analysis; implementing a true EMA; and correcting the global top-three ranking.</p>
+              <p>Data-quality checks for missing, duplicated or inconsistent attributes would strengthen the import layer, while Power BI could make the verified query outputs easier to explore.</p>
+            </section>
+
+            <a class="next-case" href="bangalore-accidents.html"><span>Next case study</span><b>Bangalore Accident Analysis <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>
