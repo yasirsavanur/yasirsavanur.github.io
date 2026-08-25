@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apple Purchase Data case study: a tested PySpark pipeline across CSV, Parquet and Delta sources, verified in Databricks.">
+    <meta name="theme-color" content="#070b10">
+    <title>Apple Purchase Data with PySpark | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/portfolio.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(255, 95, 95, 0.09)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://github.com/yasirsavanur/apple-data-analysis-pyspark" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Back to selected work</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">04 · Data engineering · Databricks</p>
+              <h1>Apple Purchase Data with PySpark</h1>
+              <p class="case-lead">A tiny tutorial dataset rebuilt as a proper mixed-source pipeline with explicit schemas, auditable corrections, reusable transformations and automated checks.</p>
+              <div class="case-actions"><a class="button button-primary" href="https://github.com/yasirsavanur/apple-data-analysis-pyspark" target="_blank" rel="noreferrer">View full repository <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>Pipeline design, tests and Databricks execution</dd></div>
+                <div><dt>Stack</dt><dd>PySpark, Delta Lake, Parquet, pytest</dd></div>
+                <div><dt>Data</dt><dd>10 transactions, 4 customers, 4 products</dd></div>
+                <div><dt>Focus</dt><dd>Correctness and structure, not analytical scale</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal"><img src="https://raw.githubusercontent.com/yasirsavanur/apple-data-analysis-pyspark/main/docs/assets/apple-pyspark-pipeline.png" alt="PySpark pipeline connecting CSV, Delta and Parquet inputs to tested analytics outputs"></div>
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>3</strong><span>source formats behind one reader interface</span></div>
+            <div class="case-fact"><strong>5</strong><span>analytical workflows and output tables</span></div>
+            <div class="case-fact"><strong>0</strong><span>unmatched dimensions after standardisation</span></div>
+            <div class="case-fact"><strong>3</strong><span>Databricks notebooks executed end to end</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents"><span>On this page</span><nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#pipeline">Pipeline</a><a href="#quality">Data quality</a><a href="#analysis">Analysis</a><a href="#verification">Verification</a></nav></aside>
+          <article class="case-article">
+            <section id="brief">
+              <h2>Small data, proper engineering</h2>
+              <p>The original learning exercise asks several customer-purchase questions using a small Apple dataset. Rather than leave the work as notebook cells, I rebuilt it as a package with a command-line workflow, mixed storage formats, explicit schemas, modular transformations and tests.</p>
+              <p>The dataset is deliberately tiny and synthetic. Its numerical findings are proof that the pipeline behaves correctly, not evidence about real Apple customers. The value of the project lies in the structure and checks.</p>
+              <div class="callout"><p>Using a tiny dataset makes expected answers easy to calculate independently. That turns the data into a useful test fixture rather than pretending it demonstrates scale.</p></div>
+            </section>
+
+            <section id="pipeline">
+              <h2>One interface across three source formats</h2>
+              <p>Transactions remain in CSV, customer data is prepared as a Delta table and product data is written as Parquet. A Factory Pattern reader selects the correct implementation while the transformation layer receives consistent Spark DataFrames.</p>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Transaction CSV</b><small>Event records with customer, product and purchase time.</small></div><em>RAW</em></div>
+                <div class="flow-step"><span>02</span><div><b>Customer Delta + Product Parquet</b><small>Dimension-style sources deliberately stored in different formats.</small></div><em>PREPARE</em></div>
+                <div class="flow-step"><span>03</span><div><b>Reader Factory</b><small>Format-specific readers behind one extraction contract.</small></div><em>INGEST</em></div>
+                <div class="flow-step"><span>04</span><div><b>Validation + transformations</b><small>Keys, nulls and relationships checked before business logic.</small></div><em>PROCESS</em></div>
+                <div class="flow-step"><span>05</span><div><b>Parquet + Delta outputs</b><small>Five repeatable analytical results written to storage.</small></div><em>LOAD</em></div>
+              </div>
+              <p>Explicit schemas replace type inference. Spark windows provide deterministic purchase ordering, while broadcast joins are used for the tiny customer and product dimensions.</p>
+            </section>
+
+            <section id="quality">
+              <h2>A source mismatch left visible</h2>
+              <p>The public source uses different names for the same products. The product master contains labels such as “iPhone SE”, “AirPods Pro” and “MacBook Air”, while transactions contain “iPhone”, “AirPods” and “MacBook”. An uncorrected join would match no product rows.</p>
+              <p>The raw files remain unchanged. During source preparation, the three names are standardised to the transaction vocabulary and the original value is retained in <code>source_product_name</code>.</p>
+              <div class="decision-grid">
+                <article class="decision-card"><span>CHECK 01</span><h3>Null validation</h3><p>Required identifiers and analytical fields are checked before processing.</p></article>
+                <article class="decision-card"><span>CHECK 02</span><h3>Duplicate keys</h3><p>Dimension keys are tested before they are trusted in a join.</p></article>
+                <article class="decision-card"><span>CHECK 03</span><h3>Unmatched dimensions</h3><p>Customer and product references must resolve after documented standardisation.</p></article>
+                <article class="decision-card"><span>CHECK 04</span><h3>Expected answers</h3><p>Reference results are independently checkable without Spark.</p></article>
+              </div>
+              <p>Quietly replacing the raw product file would have made the example look neater while hiding the exact data-quality issue the pipeline needed to handle.</p>
+            </section>
+
+            <section id="analysis">
+              <h2>Five workflows, each with a clear rule</h2>
+              <ul>
+                <li><strong>Immediate next purchase:</strong> use <code>lead()</code> over ordered customer transactions to find an iPhone followed directly by AirPods.</li>
+                <li><strong>Exact product set:</strong> use <code>collect_set()</code> to find customers whose entire history contains only iPhone and AirPods, regardless of order.</li>
+                <li><strong>Subsequent purchases:</strong> rank each customer’s events and retain an ordered list after the first purchase.</li>
+                <li><strong>Average delay:</strong> calculate the number of days between the qualifying iPhone and immediately following AirPods purchase.</li>
+                <li><strong>Top products:</strong> join product prices and rank revenue across the supplied records.</li>
+              </ul>
+              <p>The distinction between “bought only these products” and “bought one immediately after the other” is tested directly. Customer 107 qualifies for the exact-set result but not the sequence result because that customer purchased AirPods before the iPhone.</p>
+            </section>
+
+            <section id="verification">
+              <h2>Verified locally, in CI and in Databricks</h2>
+              <p>The repository includes unit tests and a mixed-source integration test, plus a dependency-free Python reference script for checking expected business answers before Spark is installed.</p>
+              <p>All three notebooks were executed on 16 August 2026 using Databricks serverless compute and a Unity Catalog volume. The run completed source preparation, validation, all five workflows, Parquet and Delta writes and Spark optimisation-plan inspection.</p>
+              <p>The third notebook is intentionally explanatory. It displays formatted plans for repartitioning, coalescing, predicate pushdown and broadcast joins so optimisation choices can be inspected rather than merely named.</p>
+              <div class="case-tags"><span>PySpark</span><span>Spark SQL</span><span>Delta Lake</span><span>Parquet</span><span>Databricks</span><span>Unity Catalog</span><span>pytest</span><span>GitHub Actions</span></div>
+            </section>
+
+            <a class="next-case" href="orbit-qa.html"><span>Next case study</span><b>Orbit QA Framework <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PitchQuery case study: plain-English football analysis with guarded SQL, DuckDB, FastAPI, Agno and Gemma 4.">
+    <meta name="theme-color" content="#070b10">
+    <title>PitchQuery Case Study | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/portfolio.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(84, 171, 255, 0.13)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://github.com/yasirsavanur/pitchquery-generative-football-bi" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Back to selected work</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">01 · Generative BI · Live application</p>
+              <h1>PitchQuery</h1>
+              <p class="case-lead">A football analytics interface that answers unplanned questions in plain English, while keeping the SQL, tool activity and assumptions visible enough to challenge.</p>
+              <div class="case-actions">
+                <a class="button button-primary" href="https://pitchquery-football-bi.vercel.app" target="_blank" rel="noreferrer">Open live application <span aria-hidden="true">↗</span></a>
+                <a class="button button-secondary" href="https://github.com/yasirsavanur/pitchquery-generative-football-bi" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>Design, data pipeline, API and validation</dd></div>
+                <div><dt>Stack</dt><dd>FastAPI, DuckDB, SQLGlot, Agno, Gemma 4</dd></div>
+                <div><dt>Data</dt><dd>61,021 match-level records</dd></div>
+                <div><dt>Focus</dt><dd>Flexible BI without unchecked SQL</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal">
+            <img src="https://pitchquery-football-bi.vercel.app/og.png" alt="PitchQuery interface showing a football analytics question and SQL-backed answer">
+          </div>
+
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>61,021</strong><span>matches in the verified production snapshot</span></div>
+            <div class="case-fact"><strong>22</strong><span>European competitions</span></div>
+            <div class="case-fact"><strong>8</strong><span>seasons of coverage</span></div>
+            <div class="case-fact"><strong>1</strong><span>read-only approved table</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents">
+            <span>On this page</span>
+            <nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#approach">Approach</a><a href="#guardrails">SQL guardrails</a><a href="#decisions">Design decisions</a><a href="#limitations">Limitations</a></nav>
+          </aside>
+
+          <article class="case-article">
+            <section id="brief">
+              <h2>The brief</h2>
+              <p>Most dashboards can only answer questions that someone anticipated when they designed the report. Football data makes that limitation obvious because a user may want a league table one minute, card totals the next, and a comparison across months after that.</p>
+              <p>PitchQuery was built to support those unplanned questions without pretending that model-generated SQL should be trusted automatically. The interface therefore shows the answer alongside the executed query, tool trace and any assumptions made.</p>
+              <div class="callout"><p><strong>The real design question:</strong> how do you make natural-language analysis flexible without turning the database into a black box?</p></div>
+            </section>
+
+            <section id="approach">
+              <h2>From question to checked answer</h2>
+              <p>The production snapshot covers 22 European competitions between 27 July 2018 and 31 May 2026. A reproducible Python pipeline downloads public historical CSV files, normalises the schemas and checks that the required coverage exists before packaging the data.</p>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Question + selected league</b><small>The user sets the analytical scope before the agent runs.</small></div><em>INPUT</em></div>
+                <div class="flow-step"><span>02</span><div><b>Gemma 4 agent</b><small>Agno handles interpretation, tool selection and answer drafting.</small></div><em>INTERPRET</em></div>
+                <div class="flow-step"><span>03</span><div><b>SQL AST guard</b><small>SQLGlot parses the statement and checks it against explicit rules.</small></div><em>VALIDATE</em></div>
+                <div class="flow-step"><span>04</span><div><b>Read-only DuckDB</b><small>Only an approved query is executed over the match table.</small></div><em>EXECUTE</em></div>
+                <div class="flow-step"><span>05</span><div><b>Answer + evidence</b><small>The result, final SQL and assumptions remain visible.</small></div><em>EXPLAIN</em></div>
+              </div>
+              <p>FastAPI and Pydantic provide the API and response contract. The browser and API share the same origin in production, which keeps the deployed architecture small and removes unnecessary cross-origin configuration.</p>
+            </section>
+
+            <section id="guardrails">
+              <h2>The generated query is never the final authority</h2>
+              <p>Every statement is parsed before execution. The validator rejects anything that falls outside the contract and returns it to the agent for correction.</p>
+              <div class="decision-grid">
+                <article class="decision-card"><span>RULE 01</span><h3>Read-only statements</h3><p>One SELECT or WITH statement per call. Writes and multiple statements are rejected.</p></article>
+                <article class="decision-card"><span>RULE 02</span><h3>Table allowlist</h3><p>The normalised matches table is the only permitted analytical source.</p></article>
+                <article class="decision-card"><span>RULE 03</span><h3>Exact league scope</h3><p>Every table scan must use the selected league, including each branch of a UNION.</p></article>
+                <article class="decision-card"><span>RULE 04</span><h3>Bounded output</h3><p>A maximum result size is added when the generated query omits a limit.</p></article>
+              </div>
+              <p>The execution layer opens DuckDB in read-only mode as another boundary. Tests cover real query execution and deliberate attempts to write, use an unknown table, omit a league filter or partially scope a UNION.</p>
+            </section>
+
+            <section id="decisions">
+              <h2>Decisions that made the project more credible</h2>
+              <h3>Expose the SQL</h3>
+              <p>Hiding the generated query would make the interface cleaner but much harder to audit. The final SQL is treated as part of the answer, not implementation noise.</p>
+              <h3>Bundle a verified snapshot</h3>
+              <p>The serverless API starts with real data immediately. The build script remains available for reproducibility, while coverage checks stop an incomplete refresh from silently replacing the production dataset.</p>
+              <h3>Keep the boundary narrow</h3>
+              <p>Allowing arbitrary tables would make the demonstration look more flexible, but it would weaken the contract. One approved table and an exact league filter make the behaviour easier to reason about and test.</p>
+              <div class="case-tags"><span>FastAPI</span><span>Pydantic</span><span>DuckDB</span><span>SQLGlot</span><span>Agno</span><span>Gemma 4</span><span>JavaScript</span><span>pytest</span></div>
+            </section>
+
+            <section id="limitations">
+              <h2>What the data cannot answer</h2>
+              <p>The source contains team-level match summaries rather than player events. A question such as “who received the most cards?” therefore means the team, not an individual player. The application reports that assumption instead of implying more detail than the dataset holds.</p>
+              <p>Natural-language querying also remains probabilistic. Guardrails reduce the space in which the agent can be wrong or unsafe, but a visible query and stated assumptions are still necessary because a syntactically valid query can misunderstand the user’s intent.</p>
+            </section>
+
+            <a class="next-case" href="waste-data.html"><span>Next case study</span><b>England Waste Flow Analysis <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>

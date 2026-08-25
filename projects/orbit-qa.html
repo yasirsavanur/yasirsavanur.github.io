@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Orbit QA case study: a Python, pytest and Selenium framework for maintainable UI and API automation with cross-browser CI.">
+    <meta name="theme-color" content="#070b10">
+    <title>Orbit QA Framework | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/portfolio.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(154, 116, 255, 0.12)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://github.com/yasirsavanur/Python-Test-Automation-Framework" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Back to selected work</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">05 · Quality engineering · UI + API</p>
+              <h1>Orbit QA Framework</h1>
+              <p class="case-lead">A repeatable Python test framework that keeps browser journeys, API contracts, test data, diagnostics and CI feedback cleanly separated.</p>
+              <div class="case-actions"><a class="button button-primary" href="https://github.com/yasirsavanur/Python-Test-Automation-Framework" target="_blank" rel="noreferrer">View full repository <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>Framework, test target and CI design</dd></div>
+                <div><dt>Stack</dt><dd>Python, pytest, Selenium 4, GitHub Actions</dd></div>
+                <div><dt>Coverage</dt><dd>UI, API, unit and cross-browser checks</dd></div>
+                <div><dt>Focus</dt><dd>Useful evidence when a check fails</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal">
+            <div class="qa-visual" role="img" aria-label="Quality gates passing across framework, Chrome and Firefox jobs">
+              <div class="qa-job"><i></i><span>Framework · Python 3.10 / 3.12</span><span>PASSED</span></div>
+              <div class="qa-job"><i></i><span>API contracts · response schema</span><span>PASSED</span></div>
+              <div class="qa-job"><i></i><span>Selenium · Chrome</span><span>PASSED</span></div>
+              <div class="qa-job"><i></i><span>Selenium · Firefox</span><span>PASSED</span></div>
+              <div class="qa-job"><i></i><span>Branch coverage · minimum 80%</span><span>GATE MET</span></div>
+            </div>
+          </div>
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>2</strong><span>browser engines exercised in CI</span></div>
+            <div class="case-fact"><strong>2</strong><span>Python versions in the framework matrix</span></div>
+            <div class="case-fact"><strong>80%</strong><span>enforced branch-coverage floor</span></div>
+            <div class="case-fact"><strong>UI + API</strong><span>checks against the same bundled system</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents"><span>On this page</span><nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#shape">Framework shape</a><a href="#reliability">Reliability</a><a href="#evidence">Failure evidence</a><a href="#ci">Continuous integration</a></nav></aside>
+          <article class="case-article">
+            <section id="brief">
+              <h2>A framework that does not depend on someone else’s demo site</h2>
+              <p>Public test sites change, disappear or throttle automated traffic. That makes them a weak foundation for a portfolio framework because an unrelated change can turn every build red.</p>
+              <p>Orbit QA includes a small deterministic commerce system as the target. The full UI and API suite can run locally after cloning, with no account, paid service or unstable third-party dependency.</p>
+              <div class="callout"><p>The project is less about producing a large number of tests and more about showing how tests remain readable, repeatable and useful when something goes wrong.</p></div>
+            </section>
+
+            <section id="shape">
+              <h2>Clear ownership inside the framework</h2>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Configuration + driver factory</b><small>Validated runtime settings and local or remote browser sessions.</small></div><em>RUNTIME</em></div>
+                <div class="flow-step"><span>02</span><div><b>Page objects</b><small>Selectors, waits and user-level browser actions.</small></div><em>INTERACT</em></div>
+                <div class="flow-step"><span>03</span><div><b>API client</b><small>JSON service calls and response-contract checks.</small></div><em>SERVICE</em></div>
+                <div class="flow-step"><span>04</span><div><b>pytest fixtures</b><small>Infrastructure startup, lifecycle and failure hooks.</small></div><em>CONTROL</em></div>
+                <div class="flow-step"><span>05</span><div><b>Intent-focused tests</b><small>Assertions stay close to the behaviour being checked.</small></div><em>VERIFY</em></div>
+              </div>
+              <p>Fixtures own infrastructure and cleanup. Page objects own browser mechanics. Tests own assertions. Keeping those responsibilities separate means a browser change, a page change and a product regression fail in recognisably different places.</p>
+            </section>
+
+            <section id="reliability">
+              <h2>Synchronisation and selectors chosen for stability</h2>
+              <p>The UI uses stable <code>data-testid</code> selectors and explicit waits for the condition each action genuinely needs. There are no fixed sleeps or broad implicit waits hiding timing problems.</p>
+              <div class="decision-grid">
+                <article class="decision-card"><span>CHOICE 01</span><h3>Explicit waits</h3><p>Each wait describes the state required before the test continues.</p></article>
+                <article class="decision-card"><span>CHOICE 02</span><h3>Small page objects</h3><p>Reusable actions remove repetition without swallowing useful Selenium errors.</p></article>
+                <article class="decision-card"><span>CHOICE 03</span><h3>Selenium Manager</h3><p>Local drivers are resolved without a machine-specific path in source.</p></article>
+                <article class="decision-card"><span>CHOICE 04</span><h3>Versioned test data</h3><p>Non-secret cases are readable and reproducible across environments.</p></article>
+              </div>
+              <p>Runtime options allow Chrome, Firefox, headed execution, a remote Grid, another compatible base URL and an adjustable explicit-wait timeout without changing test code.</p>
+            </section>
+
+            <section id="evidence">
+              <h2>A failed check should leave something useful behind</h2>
+              <p>When a browser assertion fails, the driver fixture writes both a screenshot and the matching HTML source. The screenshot shows what a person saw. The DOM snapshot helps investigate selectors, hidden states and rendered markup.</p>
+              <p>HTML and JUnit reports are produced alongside coverage output. CI uploads these artifacts even after a failed job, so the evidence is not lost precisely when it matters most.</p>
+              <p>The framework emits portable JUnit XML rather than coupling directly to a live test-management account. A separate adapter can consume those results later without putting credentials or vendor configuration into the core suite.</p>
+            </section>
+
+            <section id="ci">
+              <h2>Fast framework feedback separated from browser compatibility</h2>
+              <p>The GitHub Actions workflow runs Ruff and unit/API tests on Python 3.10 and 3.12. Complete suites then run separately in Chrome and Firefox with HTML, JUnit and branch-coverage reporting.</p>
+              <p>This matrix keeps the signal specific. A Python compatibility issue, API-contract change and browser-specific regression do not collapse into one vague failed build. The 80% branch-coverage threshold acts as a quality gate, not a vanity badge.</p>
+              <div class="case-tags"><span>Python</span><span>pytest</span><span>Selenium 4</span><span>Page objects</span><span>API contracts</span><span>GitHub Actions</span><span>Ruff</span><span>JUnit</span></div>
+            </section>
+
+            <a class="next-case" href="pitchquery.html"><span>Back to the first case study</span><b>PitchQuery <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>

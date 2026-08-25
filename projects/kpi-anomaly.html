@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="KPI Anomaly Detection case study: transparent z-score monitoring, business explanations, logging and conditional email alerts.">
+    <meta name="theme-color" content="#070b10">
+    <title>KPI Anomaly Detection | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/portfolio.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(255, 184, 78, 0.10)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://github.com/yasirsavanur/Business_KPI_Anomaly_Detection_Alerting_Agent" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Back to selected work</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">03 · Monitoring automation · Statistical detection</p>
+              <h1>KPI Anomaly Detection</h1>
+              <p class="case-lead">A small analytics product that watches operational KPIs, separates routine variation from meaningful movement and only raises an alert when something crosses a clear threshold.</p>
+              <div class="case-actions"><a class="button button-primary" href="https://github.com/yasirsavanur/Business_KPI_Anomaly_Detection_Alerting_Agent" target="_blank" rel="noreferrer">View full repository <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>Analytics logic, workbook and Python automation</dd></div>
+                <div><dt>Stack</dt><dd>Python, pandas, Excel, SMTP</dd></div>
+                <div><dt>Data</dt><dd>180 days of linked e-commerce KPIs</dd></div>
+                <div><dt>Focus</dt><dd>Inspectable alerts, not black-box scoring</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal"><img src="../images/ai-anomaly-agent-thumbnail.svg" alt="KPI anomaly monitoring flow from business metrics to checked alert"></div>
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>180</strong><span>days of synthetic trading activity</span></div>
+            <div class="case-fact"><strong>8</strong><span>linked commercial KPIs</span></div>
+            <div class="case-fact"><strong>7-day</strong><span>rolling comparison baseline</span></div>
+            <div class="case-fact"><strong>|z| ≥ 2</strong><span>starting anomaly threshold</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents"><span>On this page</span><nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#method">Detection method</a><a href="#workflow">Workflow</a><a href="#interpretation">Interpretation</a><a href="#limitations">Limitations</a></nav></aside>
+          <article class="case-article">
+            <section id="brief">
+              <h2>Moving beyond a notebook</h2>
+              <p>An exploratory notebook helps someone understand what happened once. An operational team usually has a more repetitive problem: check the same set of numbers every morning and notice quickly when one of them behaves differently.</p>
+              <p>This project turns an Excel input into a repeatable monitoring workflow. It checks traffic, orders, conversion, average order value, revenue, marketing cost, refunds and refund rate, then logs and explains material exceptions.</p>
+              <div class="callout"><p>The aim was not to build the cleverest detector. It was to build one a manager could understand, inspect and challenge.</p></div>
+            </section>
+
+            <section id="method">
+              <h2>A transparent statistical baseline</h2>
+              <p>For each monitored metric, the latest value is compared with the previous seven days. The workflow calculates the rolling mean, rolling standard deviation, percentage movement and z-score.</p>
+              <div class="decision-grid">
+                <article class="decision-card"><span>|Z| &lt; 2.0</span><h3>Normal</h3><p>The current movement remains within the chosen routine range.</p></article>
+                <article class="decision-card"><span>2.0–2.49</span><h3>Medium</h3><p>An unusual movement worth recording and reviewing.</p></article>
+                <article class="decision-card"><span>2.5–2.99</span><h3>High</h3><p>A material exception that deserves prompt attention.</p></article>
+                <article class="decision-card"><span>3.0+</span><h3>Critical</h3><p>A large departure from recent behaviour.</p></article>
+              </div>
+              <p>The synthetic dataset includes a few known incidents such as a traffic spike with weak conversion, a revenue decline, a marketing-cost spike and a refund surge. These planted events make it possible to test whether the workflow surfaces meaningful patterns rather than only random noise.</p>
+            </section>
+
+            <section id="workflow">
+              <h2>From spreadsheet to stakeholder alert</h2>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Read and validate Excel</b><small>Sort by date and confirm the expected KPI fields exist.</small></div><em>LOAD</em></div>
+                <div class="flow-step"><span>02</span><div><b>Build rolling baseline</b><small>Use the previous seven observations, excluding the current value.</small></div><em>COMPARE</em></div>
+                <div class="flow-step"><span>03</span><div><b>Classify direction and severity</b><small>Positive and negative anomalies keep their business meaning.</small></div><em>DETECT</em></div>
+                <div class="flow-step"><span>04</span><div><b>Generate plain-English context</b><small>Map each metric to sensible investigation prompts.</small></div><em>EXPLAIN</em></div>
+                <div class="flow-step"><span>05</span><div><b>Log and notify conditionally</b><small>Write an audit row and send email only when something triggered.</small></div><em>ALERT</em></div>
+              </div>
+              <p>The workbook remains useful by itself. Its monitor and dashboard sheets show the current value, baseline, standard deviation, percentage difference, direction, severity and explanation. The Python layer reproduces the logic and turns it into a scheduled watcher.</p>
+            </section>
+
+            <section id="interpretation">
+              <h2>Detection and interpretation are separate</h2>
+              <p>The statistical layer decides whether the number is unusual. A second rules layer translates that result into a useful investigation prompt. A fall in orders points towards traffic and conversion; a rise in marketing cost points towards campaign changes and return on spend; a refund spike points towards product, fulfilment or service issues.</p>
+              <p>This is deliberately phrased as a direction to investigate, not an automated claim about root cause. The system knows which metric moved. It does not know why without further evidence.</p>
+              <div class="callout"><p><strong>Example:</strong> “Revenue is materially below its recent baseline. Inspect orders, conversion and average order value.” That is much more actionable than returning only “z = −3.2”.</p></div>
+              <p>Credentials are provided through environment variables rather than stored in source. If email configuration is absent, the script still runs, prints the result and writes the alert log while safely skipping notification.</p>
+              <div class="case-tags"><span>Python</span><span>pandas</span><span>Excel</span><span>Z-scores</span><span>Rolling baseline</span><span>SMTP</span><span>Environment variables</span><span>Audit log</span></div>
+            </section>
+
+            <section id="limitations">
+              <h2>Where this method stops being enough</h2>
+              <p>A fixed seven-day baseline does not handle every seasonal pattern. In production, Mondays may need comparison with previous Mondays, different metrics may need different thresholds and repeated alerts may need suppression.</p>
+              <p>Z-scores also suit relatively stable behaviour better than heavily skewed distributions. Median absolute deviation, interquartile range, EWMA, forecasting residuals or an Isolation Forest may be better for some metrics.</p>
+              <p>The current version checks KPIs independently. A stronger production system would model correlated movement, keep configuration outside the code, log to a database and route alerts to the team’s normal channel.</p>
+            </section>
+
+            <a class="next-case" href="apple-pyspark.html"><span>Next case study</span><b>Apple Purchase Data with PySpark <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>

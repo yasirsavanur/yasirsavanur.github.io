@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="England Waste Flow Analysis case study: Python ETL and Power BI modelling across 300,000+ Environment Agency records.">
+    <meta name="theme-color" content="#070b10">
+    <title>England Waste Flow Analysis | Yasir Savanur</title>
+    <link rel="stylesheet" href="../assets/css/portfolio.css">
+    <script src="../assets/js/portfolio.js" defer></script>
+  </head>
+  <body class="case-page" style="--case-glow: rgba(114, 237, 188, 0.12)">
+    <a class="skip-link" href="#case-content">Skip to content</a>
+    <header class="site-header is-scrolled" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="../index.html" aria-label="Yasir Savanur, home"><span class="brand-mark">YS</span><span class="brand-text">Yasir Savanur</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Open navigation</span></button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+          <a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#about">About</a><a href="../index.html#contact">Contact</a>
+          <a class="nav-cta" href="https://github.com/yasirsavanur/waste_mgmt_data" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="case-main" id="case-content">
+      <section class="case-hero">
+        <div class="shell">
+          <a class="back-link" href="../index.html#work"><span aria-hidden="true">←</span> Back to selected work</a>
+          <div class="case-hero-grid">
+            <div class="reveal">
+              <p class="eyebrow">02 · Public-sector BI · Data modelling</p>
+              <h1>England Waste Flow Analysis</h1>
+              <p class="case-lead">A Python and Power BI workflow for understanding how waste moves through England without counting the same physical tonnage twice.</p>
+              <div class="case-actions"><a class="button button-primary" href="https://github.com/yasirsavanur/waste_mgmt_data" target="_blank" rel="noreferrer">View full repository <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <aside class="case-side reveal" aria-label="Project summary">
+              <dl>
+                <div><dt>Role</dt><dd>ETL, data model, DAX and dashboard</dd></div>
+                <div><dt>Stack</dt><dd>Python, pandas, pyxlsb, Power BI</dd></div>
+                <div><dt>Data</dt><dd>Environment Agency, 2023–2024</dd></div>
+                <div><dt>Focus</dt><dd>Flow, fate, region and data integrity</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <div class="case-media-shell reveal"><img src="../images/wasteimg.jpeg" alt="Power BI dashboard analysing waste received and removed across England"></div>
+          <div class="case-facts reveal">
+            <div class="case-fact"><strong>300k+</strong><span>rows across received and removed extracts</span></div>
+            <div class="case-fact"><strong>~6,000</strong><span>regulated facilities represented</span></div>
+            <div class="case-fact"><strong>2</strong><span>independent fact tables to prevent inflation</span></div>
+            <div class="case-fact"><strong>2023–24</strong><span>analysis period</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-content">
+        <div class="shell case-layout">
+          <aside class="case-toc" aria-label="Case study contents"><span>On this page</span><nav aria-label="Case sections"><a href="#brief">The brief</a><a href="#pipeline">Pipeline</a><a href="#model">Data model</a><a href="#findings">Findings</a><a href="#integrity">Integrity choices</a></nav></aside>
+          <article class="case-article">
+            <section id="brief">
+              <h2>The awkward part was not the chart</h2>
+              <p>The Environment Agency publishes separate annual extracts for waste received by permitted facilities and waste removed from them. The files are large binary workbooks, inconsistent between years and contain confidentiality-driven blanks.</p>
+              <p>The larger analytical risk is conceptual. Received and removed records describe two views of the same national system. Merging or summing them without a clear definition can count the same physical waste once on entry and again on exit.</p>
+              <div class="callout"><p><strong>Objective:</strong> answer what happens to waste, what categories move through each region and how volumes changed from 2023 to 2024, while keeping operational handling separate from physical net flow.</p></div>
+            </section>
+
+            <section id="pipeline">
+              <h2>Cleaning upstream instead of asking Power BI to do everything</h2>
+              <p>Loading multiple <code>.xlsb</code> files directly through Power Query was slow and fragile. The extraction stage moved into Python so the dashboard could consume two smaller, predictable master files.</p>
+              <div class="flow-grid">
+                <div class="flow-step"><span>01</span><div><b>Annual binary workbooks</b><small>Received and removed extracts remain separate.</small></div><em>SOURCE</em></div>
+                <div class="flow-step"><span>02</span><div><b>Python extraction</b><small>pandas and pyxlsb read the heavy binary files directly.</small></div><em>INGEST</em></div>
+                <div class="flow-step"><span>03</span><div><b>Resilient year and sheet logic</b><small>Regex stamps the year; partial matching handles renamed tabs.</small></div><em>STANDARDISE</em></div>
+                <div class="flow-step"><span>04</span><div><b>Two clean master files</b><small>One for inbound records and one for outbound records.</small></div><em>LOAD</em></div>
+                <div class="flow-step"><span>05</span><div><b>Power BI semantic model</b><small>Shared dimensions filter both facts without flattening them.</small></div><em>ANALYSE</em></div>
+              </div>
+              <p>The fallback sheet-matching step is intentionally practical. If a future release changes “2024 Waste Received” to a slightly different label, the script searches available tab names for the relevant phrase instead of failing on an exact string.</p>
+            </section>
+
+            <section id="model">
+              <h2>A star schema built around the definition of flow</h2>
+              <p><strong>FactReceivedWaste</strong> and <strong>FactRemovedWaste</strong> are kept independent. Year, facility region and waste category dimensions filter both. Fate applies to the outbound side, where the treatment outcome is recorded.</p>
+              <div class="decision-grid">
+                <article class="decision-card"><span>MEASURE 01</span><h3>Total operational handling</h3><p>Received plus removed. Useful for estimating facility workload, not unique physical waste.</p></article>
+                <article class="decision-card"><span>MEASURE 02</span><h3>Net waste flow</h3><p>Received minus removed. The more appropriate measure of accumulation or depletion.</p></article>
+                <article class="decision-card"><span>MODEL 01</span><h3>Shared dimensions</h3><p>Region, year and category can filter both fact tables consistently.</p></article>
+                <article class="decision-card"><span>MODEL 02</span><h3>Disconnected flow selector</h3><p>A helper table drives Both, Received and Removed views through DAX SWITCH logic.</p></article>
+              </div>
+              <p>This model allows the dashboard to show 710.80 million tonnes of operational handling across the two years while keeping the separately defined net flow of 236.12 million tonnes visible. The two figures answer different questions and are labelled accordingly.</p>
+            </section>
+
+            <section id="findings">
+              <h2>What the model surfaced</h2>
+              <ul>
+                <li><strong>Mineral waste dominated national inbound volume</strong>, which matters for heavy freight and facility planning.</li>
+                <li><strong>Mixed ordinary waste dominated outbound volume</strong>, showing a different composition after movement through the permitted system.</li>
+                <li><strong>London recorded a recovery-heavy profile in 2024</strong>, while regional comparisons showed materially different treatment mixes.</li>
+                <li><strong>Parts of the North West analysis showed negative net flow</strong>, meaning removed tonnage exceeded received tonnage and warranted investigation rather than automatic interpretation.</li>
+              </ul>
+              <p>The findings are useful because the model preserves the direction of movement. Without that distinction, a large number could reflect workload, accumulation, backlog clearance or some mixture of the three.</p>
+            </section>
+
+            <section id="integrity">
+              <h2>Messy data that was deliberately kept messy</h2>
+              <p>Blank operator and site details are often the result of approved commercial confidentiality claims. The tonnage remains valid even when identifiers are withheld. Removing those rows would make the dataset appear cleaner while quietly reducing national totals.</p>
+              <p>Apparent duplicates were also retained because identical-weight transactions can be genuine separate movements. With no reliable transaction key proving duplication, deletion would introduce an assumption the source could not support.</p>
+              <div class="callout"><p>The dashboard leaves “(Blank)” options visible and documents why. That is less cosmetically tidy, but analytically more honest.</p></div>
+              <p>The analysis covers two years, so it should not be treated as a long-term trend model. Regional anomalies also require operational context before they become conclusions.</p>
+              <div class="case-tags"><span>Power BI</span><span>DAX</span><span>Python</span><span>pandas</span><span>pyxlsb</span><span>Regex</span><span>Star schema</span><span>Data governance</span></div>
+            </section>
+
+            <a class="next-case" href="kpi-anomaly.html"><span>Next case study</span><b>KPI Anomaly Detection <i aria-hidden="true">→</i></b></a>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="shell"><p><span class="brand-mark">YS</span> Built and maintained by Yasir Savanur.</p><p>© <span data-year>2026</span> · <a href="../index.html">Back to portfolio</a></p></div></footer>
+  </body>
+</html>
