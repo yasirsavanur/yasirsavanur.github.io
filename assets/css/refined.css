@@ -82,8 +82,7 @@ img { display: block; max-width: 100%; }
 .project-image img { width: 100%; aspect-ratio: 16 / 8.9; filter: grayscale(1) contrast(1.05); object-fit: cover; transition: transform 350ms ease; }
 .project-image:hover img { transform: scale(1.025); }
 .project-image:hover::after { background: transparent; }
-.project-number, .open-mark { position: absolute; z-index: 2; display: grid; place-items: center; background: rgba(255, 255, 255, .92); backdrop-filter: blur(8px); }
-.project-number { top: 13px; left: 13px; width: 34px; height: 25px; border-radius: 999px; color: #40444c; font-family: var(--mono); font-size: .58rem; }
+.open-mark { position: absolute; z-index: 2; display: grid; place-items: center; background: rgba(255, 255, 255, .92); backdrop-filter: blur(8px); }
 .open-mark { right: 13px; bottom: 13px; width: 36px; height: 36px; border-radius: 50%; color: var(--blue); font-size: .95rem; }
 .project-copy { padding: 18px 2px 0; }
 .project-type { margin: 0 0 8px; color: #767a83; font-family: var(--mono); font-size: .61rem; text-transform: uppercase; }
@@ -102,7 +101,6 @@ img { display: block; max-width: 100%; }
 
 .education-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .education-card { position: relative; min-height: 225px; padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
-.education-card > span { position: absolute; top: 24px; right: 26px; color: var(--blue); font-family: var(--mono); font-size: .7rem; }
 .education-year { margin: 0 0 36px; color: var(--muted); font-family: var(--mono); font-size: .65rem; }
 .education-card h3 { max-width: 320px; margin: 0 0 9px; font-size: 1.22rem; letter-spacing: -.035em; }
 .education-card p:not(.education-year), .education-card small { margin: 0; color: var(--muted); font-size: .76rem; }
