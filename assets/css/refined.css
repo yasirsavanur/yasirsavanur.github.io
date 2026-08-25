@@ -27,7 +27,7 @@ img { display: block; max-width: 100%; }
 .profile-panel { position: relative; z-index: 2; border-right: 1px solid var(--line); background: var(--panel); }
 .profile-inner { position: sticky; top: 0; display: flex; min-height: 100vh; flex-direction: column; padding: clamp(44px, 6vh, 72px) clamp(30px, 4vw, 58px) 34px; }
 .portrait-link { width: fit-content; }
-.profile-photo { width: 138px; height: 138px; border: 1px solid #c9cac5; border-radius: 50%; filter: grayscale(1) contrast(1.06); object-fit: cover; object-position: center 62%; }
+.profile-photo { width: 138px; height: 138px; border: 1px solid #c9cac5; border-radius: 50%; object-fit: cover; object-position: center 62%; }
 .profile-heading { margin-top: 27px; }
 .availability { display: flex; align-items: center; gap: 8px; margin: 0 0 13px; color: var(--muted); font-family: var(--mono); font-size: .63rem; letter-spacing: .04em; text-transform: uppercase; }
 .availability span { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px var(--blue-soft); }
@@ -79,7 +79,7 @@ img { display: block; max-width: 100%; }
 .project-card { min-width: 0; }
 .project-image { position: relative; display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #e8e8e4; }
 .project-image::after { position: absolute; inset: 0; background: rgba(22, 23, 28, .04); content: ""; transition: background 200ms ease; }
-.project-image img { width: 100%; aspect-ratio: 16 / 8.9; filter: grayscale(1) contrast(1.05); object-fit: cover; transition: transform 350ms ease; }
+.project-image img { width: 100%; aspect-ratio: 16 / 8.9; object-fit: cover; transition: transform 350ms ease; }
 .project-image:hover img { transform: scale(1.025); }
 .project-image:hover::after { background: transparent; }
 .open-mark { position: absolute; z-index: 2; display: grid; place-items: center; background: rgba(255, 255, 255, .92); backdrop-filter: blur(8px); }

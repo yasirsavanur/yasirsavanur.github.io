@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">AI Anomaly Agent for Business KPI Monitoring</title>
+  <title id="title">KPI Anomaly Detection and Alerting</title>
   <desc id="desc">A dashboard-style illustration showing KPI monitoring, anomaly detection, automated alerts and business analytics.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -19,8 +19,8 @@
   <circle cx="1080" cy="80" r="170" fill="#2c7be5" opacity="0.08"/>
   <circle cx="95" cy="615" r="160" fill="#65c18c" opacity="0.06"/>
 
-  <text x="70" y="90" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700">AI Anomaly Agent</text>
-  <text x="70" y="132" fill="#afc4dc" font-family="Arial, Helvetica, sans-serif" font-size="24">Automated Business KPI Monitoring &amp; Alerting</text>
+  <text x="70" y="90" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700">KPI Anomaly Detection</text>
+  <text x="70" y="132" fill="#afc4dc" font-family="Arial, Helvetica, sans-serif" font-size="24">Statistical Monitoring &amp; Automated Alerting</text>
 
   <rect x="70" y="180" width="720" height="405" rx="22" fill="url(#panel)" filter="url(#shadow)"/>
   <text x="105" y="225" fill="#dce8f5" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Revenue vs 7-Day Baseline</text>

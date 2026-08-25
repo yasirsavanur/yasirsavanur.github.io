@@ -871,7 +871,6 @@ button {
 
 /* Light portfolio system */
 body { background: var(--paper); color: var(--ink); }
-img { filter: grayscale(1) contrast(1.04); }
 .site-header { border-bottom-color: var(--line-light); background: rgba(250, 250, 247, .94); }
 .brand { color: var(--ink); }
 .brand-mark { border-color: rgba(48, 71, 255, .4); color: var(--gold); font-family: var(--mono); }
@@ -907,7 +906,6 @@ img { filter: grayscale(1) contrast(1.04); }
 .next-case b { font-family: var(--sans); }
 .site-footer { border-top-color: var(--line-light); background: var(--paper); }
 .site-footer .shell { color: #747881; }
-.qa-visual { filter: grayscale(1); }
 
 @media (max-width: 740px) {
   .site-nav { border-color: var(--line-light); background: #fff; }
