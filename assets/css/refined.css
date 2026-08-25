@@ -49,6 +49,7 @@ img { display: block; max-width: 100%; }
 .skill-list, .tag-list { display: flex; flex-wrap: wrap; gap: 7px; padding: 0; margin: 0; list-style: none; }
 .skill-list li, .tag-list li { padding: 5px 10px; border-radius: 999px; background: #e3e4df; color: #3e424b; font-family: var(--mono); font-size: .61rem; }
 .profile-proof { display: grid; gap: 12px; margin-top: auto; padding-top: 30px; }
+.profile-proof > .side-label { margin: 0 0 2px; }
 .profile-proof div { display: grid; grid-template-columns: 82px 1fr; gap: 11px; align-items: center; }
 .profile-proof strong { color: var(--blue); font-family: var(--mono); font-size: .77rem; }
 .profile-proof span { color: #696d74; font-size: .68rem; line-height: 1.4; }
@@ -143,7 +144,8 @@ img { display: block; max-width: 100%; }
   .profile-heading { margin-top: 6px; }
   .social-links { grid-column: 2; margin-top: 16px; }
   .profile-section { grid-column: 1 / -1; }
-  .profile-proof { grid-column: 1 / -1; grid-template-columns: repeat(2, 1fr); margin-top: 0; }
+  .profile-proof { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); margin-top: 0; }
+  .profile-proof > .side-label { grid-column: 1 / -1; }
   .portfolio-main { padding: 0 clamp(24px, 6vw, 60px); }
 }
 
